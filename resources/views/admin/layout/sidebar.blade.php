@@ -24,9 +24,9 @@
     <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Post :</h6>
-        <a class="collapse-item" href="/admin/artikel">Post</a>
-        <a class="collapse-item" href="/admin/kategori">Kategori</a>
-        <a class="collapse-item" href="/admin/tag">Tag</a>
+        <a class="collapse-item {{ request()->is('admin/artikel') ? 'active' : ''}}" href="/admin/artikel">Post</a>
+        <a class="collapse-item {{ request()->is('admin/kategori') ? 'active' : ''}}" href="/admin/kategori">Kategori</a>
+        <a class="collapse-item {{ request()->is('admin/tag') ? 'active' : ''}}" href="/admin/tag">Tag</a>
       </div>
     </div>
   </li>
@@ -38,12 +38,31 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">User :</h6>
-        <a class="collapse-item" href="/admin/user">User</a>
-        <a class="collapse-item" href="/admin/santri">Santri</a>
-        <a class="collapse-item" href="/admin/jabatan">Jabatan</a>
+        <a class="collapse-item {{ request()->is('admin/santri') ? 'active' : ''}}" href="/admin/santri">Santri</a>
+        @unlessrole('santri')
+        <a class="collapse-item {{ request()->is('admin/user') ? 'active' : ''}}" href="/admin/user">User</a>
+        <a class="collapse-item {{ request()->is('admin/jabatan') ? 'active' : ''}}" href="/admin/jabatan">Jabatan</a>
+        @endunlessrole
       </div>
     </div>
   </li>
+  @unlessrole('santri')
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTree" aria-expanded="true" aria-controls="collapseTree">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>Setting</span>
+    </a>
+    <div id="collapseTree" class="collapse" aria-labelledby="headingTree" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Setting :</h6>
+        @role('admin')
+        <a class="collapse-item {{ request()->is('admin/role') ? 'active' : ''}}" href="/admin/role">Role</a>
+        @endrole
+        <a class="collapse-item {{ request()->is('admin/biografi') ? 'active' : ''}}" href="/admin/biografi">Biografi</a>
+      </div>
+    </div>
+  </li>
+  @endunlessrole
   <hr class="sidebar-divider">
   <div class="text-center d-none d-md-inline">
     <button class="rounded-circle border-0" id="sidebarToggle"></button>

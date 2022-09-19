@@ -6,17 +6,17 @@
 
 @section('content')
 <div class="mb-2 d-flex justify-content-between">
-  <h1 class="h3 text-gray-800">Tabel tag</h1>
-  <a href="/admin/tag/tambah" class="btn btn-primary btn-icon-split">
+  <h1 class="h3 text-gray-800">Tabel biografi</h1>
+  <a href="/admin/biografi/tambah" class="btn btn-primary btn-icon-split">
     <span class="icon text-white-50">
       <i class="fas fa-plus"></i>
     </span>
-    <span class="text">Tambah tag</span>
+    <span class="text">Tambah biografi</span>
   </a>
 </div>
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Tabel tag</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Tabel biografi</h6>
   </div>
   <div class="card-body">
     <div class="table-responsive">
@@ -24,32 +24,31 @@
         <thead>
           <tr>
             <th>#</th>
+            <th>Photo</th>
             <th>Name</th>
-            @unlessrole('santri')
             <th>Action</th>
-            @endunlessrole
           </tr>
         </thead>
         <tfoot>
           <tr>
             <th>#</th>
+            <th>Photo</th>
             <th>Name</th>
-            @unlessrole('santri')
             <th>Action</th>
-            @endunlessrole
           </tr>
         </tfoot>
         <tbody>
-          @foreach ($tags as $item)
+          @foreach ($biography as $item)
           <tr>
             <td>{{ $loop->index + 1 }}</td>
-            <td>{{ $item->name }}</td>
-            @unlessrole('santri')
-            <td class="d-flex">
-              @include('admin.components.edit-button', ['url' => '/admin/tag/' . $item->id])
-              @include('admin.components.delete-button', ['url' => '/admin/tag/' . $item->id])
+            <td>
+              <img src="{{ asset("upload/biography/$item->photo") }}" style="width: 12rem;" class="img-thumbnail" alt="{{ $item->name }}">
             </td>
-            @endunlessrole
+            <td>{{ $item->name }}</td>
+            <td class="d-flex">
+              @include('admin.components.edit-button', ['url' => '/admin/biografi/' . $item->id])
+              @include('admin.components.delete-button', ['url' => '/admin/biografi/' . $item->id])
+            </td>
           </tr>
           @endforeach
         </tbody>

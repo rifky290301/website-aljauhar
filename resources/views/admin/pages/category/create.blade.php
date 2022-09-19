@@ -1,8 +1,5 @@
 @extends('admin.layout.app')
 
-@section('script-or-css')
-@endsection
-
 @section('content')
 <h1 class="h3 mb-2 text-gray-800">Buat kategori</h1>
 <div class="card shadow mb-4">
@@ -14,13 +11,10 @@
       @csrf
       <div class="form-group">
         <label for="category">Nama kategori<span class="required-star">*</span></label>
-        <input name="name" type="category" class="form-control" id="category" placeholder="kategori...">
+        <input name="name" type="text" class="form-control" id="category" placeholder="kategori..." autofocus>
       </div>
       <button type="submut" class="btn btn-primary">Simpan</button>
     </form>
   </div>
 </div>
-@endsection
-
-@section('script')
 @endsection

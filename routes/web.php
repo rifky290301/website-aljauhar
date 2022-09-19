@@ -33,38 +33,75 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function () {
 
     Route::prefix('kategori')->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\CategoryController::class, 'index']);
-        Route::get('/tambah', [App\Http\Controllers\Admin\CategoryController::class, 'create']);
-        Route::post('/', [App\Http\Controllers\Admin\CategoryController::class, 'store']);
-        Route::get('/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit']);
-        Route::patch('/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update']);
-        Route::delete('/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
+        Route::group(['middleware' => ['role:admin|pengurus']], function () {
+            Route::get('/tambah', [App\Http\Controllers\Admin\CategoryController::class, 'create']);
+            Route::post('/', [App\Http\Controllers\Admin\CategoryController::class, 'store']);
+            Route::get('/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'edit']);
+            Route::patch('/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'update']);
+            Route::delete('/{id}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
+        });
     });
 
     Route::prefix('tag')->group(function () {
         Route::get('/', [App\Http\Controllers\Admin\TagController::class, 'index']);
-        Route::get('/tambah', [App\Http\Controllers\Admin\TagController::class, 'create']);
-        Route::post('/', [App\Http\Controllers\Admin\TagController::class, 'store']);
-        Route::get('/{id}', [App\Http\Controllers\Admin\TagController::class, 'edit']);
-        Route::patch('/{id}', [App\Http\Controllers\Admin\TagController::class, 'update']);
-        Route::delete('/{id}', [App\Http\Controllers\Admin\TagController::class, 'destroy']);
+        Route::group(['middleware' => ['role:admin|pengurus']], function () {
+            Route::get('/tambah', [App\Http\Controllers\Admin\TagController::class, 'create']);
+            Route::post('/', [App\Http\Controllers\Admin\TagController::class, 'store']);
+            Route::get('/{id}', [App\Http\Controllers\Admin\TagController::class, 'edit']);
+            Route::patch('/{id}', [App\Http\Controllers\Admin\TagController::class, 'update']);
+            Route::delete('/{id}', [App\Http\Controllers\Admin\TagController::class, 'destroy']);
+        });
     });
 
     Route::prefix('santri')->group(function () {
         Route::get('/', [App\Http\Controllers\SantriController::class, 'index']);
-        Route::get('/tambah', [App\Http\Controllers\SantriController::class, 'create']);
-        Route::post('/', [App\Http\Controllers\SantriController::class, 'store']);
-        Route::get('/{id}', [App\Http\Controllers\SantriController::class, 'edit']);
-        Route::patch('/{id}', [App\Http\Controllers\SantriController::class, 'update']);
-        Route::delete('/{id}', [App\Http\Controllers\SantriController::class, 'destroy']);
+        Route::get('/lihat/{id}', [App\Http\Controllers\SantriController::class, 'show']);
+        Route::group(['middleware' => ['role:admin|pengurus']], function () {
+            Route::get('/tambah', [App\Http\Controllers\SantriController::class, 'create']);
+            Route::post('/', [App\Http\Controllers\SantriController::class, 'store']);
+            Route::get('/{id}', [App\Http\Controllers\SantriController::class, 'edit']);
+            Route::patch('/{id}', [App\Http\Controllers\SantriController::class, 'update']);
+            Route::delete('/{id}', [App\Http\Controllers\SantriController::class, 'destroy']);
+        });
     });
 
     Route::prefix('jabatan')->group(function () {
-        Route::get('/', [App\Http\Controllers\JabatanController::class, 'index']);
-        Route::get('/tambah', [App\Http\Controllers\JabatanController::class, 'create']);
-        Route::post('/', [App\Http\Controllers\JabatanController::class, 'store']);
-        Route::get('/{id}', [App\Http\Controllers\JabatanController::class, 'edit']);
-        Route::patch('/{id}', [App\Http\Controllers\JabatanController::class, 'update']);
-        Route::delete('/{id}', [App\Http\Controllers\JabatanController::class, 'destroy']);
+        Route::group(['middleware' => ['role:admin|pengurus']], function () {
+            Route::get('/', [App\Http\Controllers\JabatanController::class, 'index']);
+            Route::get('/tambah', [App\Http\Controllers\JabatanController::class, 'create']);
+            Route::post('/', [App\Http\Controllers\JabatanController::class, 'store']);
+            Route::get('/{id}', [App\Http\Controllers\JabatanController::class, 'edit']);
+            Route::patch('/{id}', [App\Http\Controllers\JabatanController::class, 'update']);
+            Route::delete('/{id}', [App\Http\Controllers\JabatanController::class, 'destroy']);
+        });
+    });
+
+    Route::prefix('biografi')->group(function () {
+        Route::group(['middleware' => ['role:admin|pengurus']], function () {
+            Route::get('/', [App\Http\Controllers\BiographyController::class, 'index']);
+            Route::get('/tambah', [App\Http\Controllers\BiographyController::class, 'create']);
+            Route::post('/', [App\Http\Controllers\BiographyController::class, 'store']);
+            Route::get('/{id}', [App\Http\Controllers\BiographyController::class, 'edit']);
+            Route::patch('/{id}', [App\Http\Controllers\BiographyController::class, 'update']);
+            Route::delete('/{id}', [App\Http\Controllers\BiographyController::class, 'destroy']);
+        });
+    });
+
+    Route::prefix('user')->group(function () {
+        Route::group(['middleware' => ['role:admin|pengurus']], function () {
+            Route::get('/', [App\Http\Controllers\UserController::class, 'index']);
+            Route::get('/tambah', [App\Http\Controllers\UserController::class, 'create']);
+            Route::post('/', [App\Http\Controllers\UserController::class, 'store']);
+            // Route::get('/{id}', [App\Http\Controllers\UserController::class, 'edit']);
+            // Route::patch('/{id}', [App\Http\Controllers\UserController::class, 'update']);
+            Route::delete('/{id}', [App\Http\Controllers\UserController::class, 'destroy']);
+        });
+    });
+
+    Route::prefix('role')->group(function () {
+        Route::group(['middleware' => ['role:admin']], function () {
+            Route::get('/', [App\Http\Controllers\RoleController::class, 'index']);
+        });
     });
 });
 

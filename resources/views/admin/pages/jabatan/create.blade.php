@@ -11,7 +11,7 @@
       @csrf
       <div class="form-group">
         <label for="jabatan">Nama jabatan<span class="required-star">*</span></label>
-        <input name="name" type="jabatan" class="form-control" id="jabatan" placeholder="jabatan...">
+        <input name="name" type="text" class="form-control" id="jabatan" placeholder="jabatan..." autofocus>
       </div>
       <button type="submit" class="btn btn-primary">Simpan</button>
     </form>

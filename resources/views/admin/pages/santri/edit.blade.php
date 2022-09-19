@@ -1,8 +1,5 @@
 @extends('admin.layout.app')
 
-@section('script-or-css')
-@endsection
-
 @section('content')
 <h1 class="h3 mb-2 text-gray-800">Buat data santri</h1>
 <div class="card shadow mb-4">
@@ -10,11 +7,12 @@
     <h6 class="m-0 font-weight-bold text-primary">Buat data santri</h6>
   </div>
   <div class="card-body">
-    <form action="/admin/santri" method="post" enctype="multipart/form-data">
+    <form action="/admin/santri/{{ $santri->id }}" method="post" enctype="multipart/form-data">
+      @method('patch')
       @csrf
       <div class="form-group">
         <label for="name">Nama<span class="required-star">*</span></label>
-        <input name="name" value="{{ $santri->name }}" type="text" class="@error('name') is-invalid @enderror form-control" id="name" placeholder="nama...">
+        <input name="name" value="{{ $santri->name }}" type="text" class="@error('name') is-invalid @enderror form-control" id="name" placeholder="nama..." autofocus>
       </div>
       <div class="form-group">
         <label for="phone">Nomor hp<span class="required-star">*</span></label>
@@ -60,10 +58,10 @@
       <div class="form-group">
         <label for="photo">Foto</label>
         <div class="custom-file">
-          <input name="photo" type="file" class="@error('photo') is-invalid @enderror custom-file-input" id="photo" aria-describedby="inputGroupFileAddon01" onChange="mainThamUrl(this)">
-          <label class="custom-file-label" for="photo">Choose file</label>
+          <input name="image" type="file" class="@error('image') is-invalid @enderror custom-file-input" id="image" aria-describedby="inputGroupFileAddon01" onChange="mainThamUrl(this)">
+          <label class="custom-file-label" for="image">Choose file</label>
         </div>
-        <img class="mt-3" src="{{ asset("upload/post/$santri->photo") }}" id="mainThmb">
+        <img class="mt-3" src="/upload/photo/{{ $santri->photo }}" id="mainThmb">
       </div>
       <div class="form-group">
         <div class="d-flex justify-content-between">

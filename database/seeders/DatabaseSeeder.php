@@ -50,7 +50,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $superAdmin = User::create([
-            'name' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin123'),
             'remember_token' => \Str::random(60),

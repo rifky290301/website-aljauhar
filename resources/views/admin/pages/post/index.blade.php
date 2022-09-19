@@ -44,7 +44,7 @@
           <td>
             <img src="{{ asset("upload/post/$item->thumbnail") }}" style="width: 12rem;" class="img-thumbnail" alt="{{ $item->title }}">
           </td>
-          <td>{{ Str::limit($item->author, 30) }}</td>
+          <td>{{ Str::limit($item->user->santri->name, 30) }}</td>
           <td>{{ Str::limit($item->title, 20) }}</td>
           <td>{{ $item->status }}</td>
           <td class="d-flex">

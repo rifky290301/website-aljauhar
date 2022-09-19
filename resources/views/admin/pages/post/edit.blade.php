@@ -17,7 +17,7 @@
       @csrf
       <div class="form-group">
         <label for="author">Penulis<span class="required-star">*</span></label>
-        <input value="{{ $post->author }}" name="author" type="author" class="@error('author') is-invalid @enderror form-control" id="author" placeholder="penulis...">
+        <input value="{{ $post->author }}" name="author" type="author" class="@error('author') is-invalid @enderror form-control" id="author" placeholder="penulis..." autofocus>
       </div>
       <div class="form-group">
         <label for="title">Judul<span class="required-star">*</span></label>
@@ -72,6 +72,7 @@
       <div class="form-group">
         <label for="status">Status<span class="required-star">*</span></label>
         <select name="status" class="@error('author') is-invalid @enderror form-control" id="status">
+          <option value="" selected disabled>--status--</option>
           <option value="publish">PUBLISHED</option>
           <option value="draft">DRAFT</option>
         </select>

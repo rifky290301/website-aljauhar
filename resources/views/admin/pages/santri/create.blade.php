@@ -14,7 +14,7 @@
       @csrf
       <div class="form-group">
         <label for="name">Nama<span class="required-star">*</span></label>
-        <input name="name" value="{{ old('name') }}" type="text" class="@error('name') is-invalid @enderror form-control" id="name" placeholder="nama...">
+        <input name="name" value="{{ old('name') }}" type="text" class="@error('name') is-invalid @enderror form-control" id="name" placeholder="nama..." autofocus>
       </div>
       <div class="form-group">
         <label for="phone">Nomor hp<span class="required-star">*</span></label>
@@ -58,10 +58,10 @@
         <input name="year_out" value="{{ old('year_out') }}" type="date" class="@error('year_out') is-invalid @enderror form-control" id="year_out" placeholder="tanggal keluar...">
       </div>
       <div class="form-group">
-        <label for="photo">Foto</label>
+        <label for="image">Foto</label>
         <div class="custom-file">
-          <input name="photo" type="file" class="@error('photo') is-invalid @enderror custom-file-input" id="photo" aria-describedby="inputGroupFileAddon01" onChange="mainThamUrl(this)">
-          <label class="custom-file-label" for="photo">Choose file</label>
+          <input name="image" type="file" class="@error('image') is-invalid @enderror custom-file-input" id="image" aria-describedby="inputGroupFileAddon01" onChange="mainThamUrl(this)">
+          <label class="custom-file-label" for="image">Choose file</label>
         </div>
         <img class="mt-3" src="" id="mainThmb">
       </div>

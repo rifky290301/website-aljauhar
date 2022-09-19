@@ -8,11 +8,11 @@
   </div>
   <div class="card-body">
     <form action="/admin/jabatan/{{ $jabatan->id }}" method="post">
-      @csrf
       @method('patch')
+      @csrf
       <div class="form-group">
         <label for="jabatan">Nama jabatan<span class="required-star">*</span></label>
-        <input value="{{ $jabatan->name }}" name="name" type="text" class="form-control" id="jabatan" placeholder="jabatan...">
+        <input value="{{ $jabatan->name }}" name="name" type="text" class="form-control" id="jabatan" placeholder="jabatan..." autofocus>
       </div>
       <button type="submit" class="btn btn-primary">Simpan</button>
     </form>
