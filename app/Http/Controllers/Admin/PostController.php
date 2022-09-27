@@ -8,12 +8,16 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Santri;
 
 class PostController extends Controller
 {
     public function dashboard()
     {
-        return view('admin.pages.index');
+        $posts = Post::all();
+        $santri = Santri::where('status', 'aktif')->get();
+        $alumni = Santri::where('status', 'alumni')->get();
+        return view('admin.pages.index', compact('posts', 'santri', 'alumni'));
     }
 
     public function index()

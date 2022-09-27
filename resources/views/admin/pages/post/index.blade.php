@@ -46,7 +46,11 @@
           </td>
           <td>{{ Str::limit($item->user->santri->name, 30) }}</td>
           <td>{{ Str::limit($item->title, 20) }}</td>
-          <td>{{ $item->status }}</td>
+          @if ($item->status == 'publish')
+          <td><span class="badge badge-success">Publish</span></td>
+          @else
+          <td><span class="badge badge-danger">Unpublish</span></td>
+          @endif
           <td class="d-flex">
             @include('admin.components.edit-button', ['url' => '/admin/artikel/' . $item->id])
             @include('admin.components.delete-button', ['url' => '/admin/artikel/' . $item->id])

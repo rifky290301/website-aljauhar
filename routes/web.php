@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/blog', [App\Http\Controllers\HomeController::class, 'blog']);
+Route::get('/blog/{slug}', [App\Http\Controllers\HomeController::class, 'show']);
+Route::get('/search', [App\Http\Controllers\HomeController::class, 'search']);
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+]);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\PostController::class, 'dashboard']);
@@ -84,6 +87,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function () {
             Route::get('/{id}', [App\Http\Controllers\BiographyController::class, 'edit']);
             Route::patch('/{id}', [App\Http\Controllers\BiographyController::class, 'update']);
             Route::delete('/{id}', [App\Http\Controllers\BiographyController::class, 'destroy']);
+        });
+    });
+
+    Route::prefix('testimoni')->group(function () {
+        Route::group(['middleware' => ['role:admin|pengurus']], function () {
+            Route::get('/', [App\Http\Controllers\TestimonialController::class, 'index']);
+            Route::get('/tambah', [App\Http\Controllers\TestimonialController::class, 'create']);
+            Route::post('/', [App\Http\Controllers\TestimonialController::class, 'store']);
+            Route::get('/{id}', [App\Http\Controllers\TestimonialController::class, 'edit']);
+            Route::patch('/{id}', [App\Http\Controllers\TestimonialController::class, 'update']);
+            Route::delete('/{id}', [App\Http\Controllers\TestimonialController::class, 'destroy']);
         });
     });
 

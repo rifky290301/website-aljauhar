@@ -61,17 +61,16 @@ class BiographyController extends Controller
         $biography = Biography::find($id);
 
         if ($request->file('photo')) {
+            $path = public_path("upload/biography/") . $biography->photo;
+            unlink($path);
+
             $date = date('H-i-s');
             $request->file('photo')->move('upload/biography', $date . $request->file('photo')->getClientOriginalName());
-            $photo = $date . $request->file('photo')->getClientOriginalName();
-
-            $path = public_path("upload/photo/") . $biography->photo;
-            unlink($path);
+            $biography->photo = $date . $request->file('photo')->getClientOriginalName();
         }
 
         $biography->update([
             'name' => $request->name,
-            'photo' => $photo,
             'biography' => $request->biography,
             'position' => $request->position,
             'publish' => $request->publish,

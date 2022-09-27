@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
+
+        $this->call(JabatanSeeder::class);
+
         Role::create([
             'name' => 'admin',
             'guard_name' => 'web',
@@ -45,6 +48,7 @@ class DatabaseSeeder extends Seeder
             'born' => now(),
             'year_of_entry' => now(),
             'photo' => 'default.png',
+            'jabatan_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -62,6 +66,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CategorySeeder::class);
         $this->call(PostSeeder::class);
-        $this->call(JabatanSeeder::class);
+        $this->call(BiographySeeder::class);
+        $this->call(TestimonialSeeder::class);
     }
 }

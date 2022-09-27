@@ -28,8 +28,8 @@
             <th>#</th>
             <th>Photo</th>
             <th>Name</th>
-            <th>Status</th>
             <th>Room</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -38,8 +38,8 @@
             <th>#</th>
             <th>Photo</th>
             <th>Name</th>
-            <th>Status</th>
             <th>Room</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </tfoot>
@@ -51,8 +51,14 @@
               <img src="{{ asset("upload/photo/$item->photo") }}" style="width: 12rem;" class="img-thumbnail" alt="{{ $item->title }}">
             </td>
             <td>{{ $item->name }}</td>
-            <td>{{ $item->status }}</td>
             <td>{{ $item->room }}</td>
+            @if ($item->status == 'aktif')
+            <td><span class="badge badge-success">{{ $item->status }}</span></td>
+            @elseif($item->status == 'alumni')
+            <td><span class="badge badge-info">{{ $item->status }}</span></td>
+            @else
+            <td><span class="badge badge-danger">{{ $item->status }}</span></td>
+            @endif
             <td class="d-flex">
               @unlessrole('santri')
               @include('admin.components.edit-button', ['url' => '/admin/santri/' . $item->id])

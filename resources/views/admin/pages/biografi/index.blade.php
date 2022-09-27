@@ -26,6 +26,7 @@
             <th>#</th>
             <th>Photo</th>
             <th>Name</th>
+            <th>Publish</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -34,6 +35,7 @@
             <th>#</th>
             <th>Photo</th>
             <th>Name</th>
+            <th>Publish</th>
             <th>Action</th>
           </tr>
         </tfoot>
@@ -45,6 +47,11 @@
               <img src="{{ asset("upload/biography/$item->photo") }}" style="width: 12rem;" class="img-thumbnail" alt="{{ $item->name }}">
             </td>
             <td>{{ $item->name }}</td>
+            @if ($item->publish == 1)
+            <td><span class="badge badge-success">Publish</span></td>
+            @else
+            <td><span class="badge badge-danger">Unpublish</span></td>
+            @endif
             <td class="d-flex">
               @include('admin.components.edit-button', ['url' => '/admin/biografi/' . $item->id])
               @include('admin.components.delete-button', ['url' => '/admin/biografi/' . $item->id])
