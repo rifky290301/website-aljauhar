@@ -52,17 +52,13 @@ class PostController extends Controller
         $request->file('thumbnail')->move('upload/post', $date . $request->file('thumbnail')->getClientOriginalName());
         $request->thumbnail = $date . $request->file('thumbnail')->getClientOriginalName();
 
-        if (!$request->status) {
-            $request->status = 'draft';
-        }
-
         $post = Post::create([
             'author' => $request->author,
             'title' => $request->title,
             'slug' => Str::slug($request->title),
             'content' => $request->content,
             'thumbnail' => $request->thumbnail,
-            'status' => $request->status,
+            'status' => $request->status ?? 'draft',
             'category_id' => $request->category_id,
             'user_id' => auth()->user()->id,
         ]);
@@ -97,8 +93,7 @@ class PostController extends Controller
             $request->file('thumbnail')->move('upload/post', $date . $request->file('thumbnail')->getClientOriginalName());
             $request->thumbnail = $date . $request->file('thumbnail')->getClientOriginalName();
 
-            $path = "upload/post/" . $post->thumbnail;
-            unlink($path);
+            unlink("upload/post/" . $post->thumbnail);
             $post->thumbnail = $request->thumbnail;
         }
 
@@ -119,8 +114,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        $path = "upload/post/" . $post->thumbnail;
-        unlink($path);
+        unlink("upload/post/" . $post->thumbnail);
         $post->delete();
         return redirect('/admin/artikel')->with('success', "Post $post->title berhasil dihapus!");
     }

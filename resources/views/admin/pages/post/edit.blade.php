@@ -1,5 +1,7 @@
 @extends('admin.layout.app')
 
+@section('title', 'Post')
+
 @section('script-or-css')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.tiny.cloud/1/g556owebzva5ilvjh4vbddn8xnipvn7mrc9hcbib1vglssoi/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
@@ -72,9 +74,8 @@
       <div class="form-group">
         <label for="status">Status<span class="required-star">*</span></label>
         <select name="status" class="@error('author') is-invalid @enderror form-control" id="status">
-          <option value="" selected disabled>--status--</option>
-          <option value="publish">PUBLISHED</option>
-          <option value="draft">DRAFT</option>
+          <option value="publish" @if($post->status == 'publish') selected @endif>PUBLISHED</option>
+          <option value="draft" @if($post->status == 'draft') selected @endif>UNPUBLISHED</option>
         </select>
       </div>
       <button type="submit" class="btn btn-primary">Simpan</button>

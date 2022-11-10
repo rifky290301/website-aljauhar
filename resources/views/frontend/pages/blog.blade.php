@@ -9,7 +9,7 @@ Blog |
 
   <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/frontend/img/jumbotron/haul.jpg');">
     <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-      <h2>Blog</h2>
+      <h1 style="font-family: 'Roboto'">Blog PP Al-Jauhar Jember</h1>
       <ol>
         <li><a href="/">Home</a></li>
         <li>Blog</li>
@@ -30,7 +30,7 @@ Blog |
               <span class="post-date">{!! date('M d, Y',  strtotime($item->created_at)) !!}</span>
             </div>
             <div class="post-content d-flex flex-column">
-              <h3 class="post-title">{{ $item->title }}</h3>
+              <h2 class="post-title">{{ $item->title }}</h2>
               <div class="meta d-flex align-items-center">
                 <div class="d-flex align-items-center">
                   <i class="bi bi-person"></i><span class="ps-2">{{ $item->user->santri->name }}</span>

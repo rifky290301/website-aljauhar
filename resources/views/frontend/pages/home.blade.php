@@ -6,9 +6,9 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-6 text-center">
-          <h2 data-aos="fade-down">Pondok Pesantren <span>Al-Jauhar Jember</span></h2>
+          <h1 data-aos="fade-down">Pondok Pesantren <br><span>Al-Jauhar Jember</span></h1>
           <p data-aos="fade-up">Visi & Misi Unggul dalam Prestasi dan Akhlaqul Karimah Serta Berpijak pada Ajaran Ahlussunah Wal Jamaah Annahdiyah</p>
-          <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Get Started</a>
+          <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">Jelahi Selengkapnya</a>
         </div>
       </div>
     </div>
@@ -33,7 +33,7 @@
       <div class="row justify-content-around gy-4">
         <div class="col-lg-6 img-bg" style="background-image: url(/frontend/img/beranda/sejarah.jpg);" data-aos="zoom-in" data-aos-delay="100"></div>
         <div class="col-lg-5 d-flex flex-column justify-content-center">
-          <h3>Profil Singkat Pondok Pesantren Al-Jauhar</h3>
+          <h2>Profil Singkat Pondok Pesantren Al-Jauhar</h2>
           <p>Pendiri Pesantren Al-Jauhar adalah K.H Sodiq Machmud SH, beliau adalah cucu dari K.H Muhammad Shiddiq seorang ulama besar dan salah satu pendiri kota Jember, yang dimakamkan di Pemakaman Condro jalan Gajah Mada. Kyai Sodiq Machmud putra dari K.H Machmud Siddiq dan Ibu Nyai Jauharotul Maknunah. Di kalangan santri pesantren Al-Jauhar, K.H. Shoddiq lebih akrab dengan sebutan Abah Sepuh.</p>
         </div>
       </div>

@@ -61,9 +61,7 @@ class TestimonialController extends Controller
         $testimonial = Testimonial::find($id);
 
         if ($request->file('photo')) {
-            $path = public_path("upload/testimonial/") . $testimonial->photo;
-            unlink($path);
-
+            unlink("upload/testimonial/" . $testimonial->photo);
             $date = date('H-i-s');
             $request->file('photo')->move('upload/testimonial', $date . $request->file('photo')->getClientOriginalName());
             $testimonial->photo = $date . $request->file('photo')->getClientOriginalName();
@@ -82,8 +80,7 @@ class TestimonialController extends Controller
     public function destroy($id)
     {
         $testimonial = Testimonial::find($id);
-        $path = public_path("upload/testimonial/") . $testimonial->photo;
-        unlink($path);
+        unlink("upload/testimonial/" . $testimonial->photo);
         $testimonial->delete();
         return redirect('/admin/testimoni')->with('success', "Testimoni $testimonial->name berhasil dihapus!");
     }

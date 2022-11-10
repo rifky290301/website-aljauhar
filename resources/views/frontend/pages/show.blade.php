@@ -9,7 +9,7 @@
 
   <div class="breadcrumbs d-flex align-items-center" style="background-image: url('/frontend/img/jumbotron/qurban.jpg');">
     <div class="container position-relative d-flex flex-column align-items-center" data-aos="fade">
-      <h2>Blog Details</h2>
+      <h1>Blog Details PP-Aljauhar</h1>
       <ol>
         <li><a href="/">Home</a></li>
         <li>{{ $post->title }}</li>

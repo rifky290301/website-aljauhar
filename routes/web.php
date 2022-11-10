@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/blog', [App\Http\Controllers\HomeController::class, 'blog']);
 Route::get('/blog/{slug}', [App\Http\Controllers\HomeController::class, 'show']);

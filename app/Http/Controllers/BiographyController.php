@@ -61,9 +61,7 @@ class BiographyController extends Controller
         $biography = Biography::find($id);
 
         if ($request->file('photo')) {
-            $path = public_path("upload/biography/") . $biography->photo;
-            unlink($path);
-
+            unlink("upload/biography/" . $biography->photo);
             $date = date('H-i-s');
             $request->file('photo')->move('upload/biography', $date . $request->file('photo')->getClientOriginalName());
             $biography->photo = $date . $request->file('photo')->getClientOriginalName();
@@ -82,8 +80,7 @@ class BiographyController extends Controller
     public function destroy($id)
     {
         $biography = Biography::find($id);
-        $path = public_path("upload/biography/") . $biography->photo;
-        unlink($path);
+        unlink("upload/biography/" . $biography->photo);
         $biography->delete();
         return redirect('/admin/biografi')->with('success', "Biografi $biography->name berhasil dihapus!");
     }

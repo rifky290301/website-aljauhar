@@ -1,5 +1,7 @@
 @extends('admin.layout.app')
 
+@section('title', 'Jabatan')
+
 @section('content')
 <h1 class="h3 mb-2 text-gray-800">Edit jabatan</h1>
 <div class="card shadow mb-4">

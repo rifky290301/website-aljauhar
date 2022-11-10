@@ -1,5 +1,7 @@
 @extends('admin.layout.app')
 
+@section('title', 'Testimonial')
+
 @section('content')
 <h1 class="h3 mb-2 text-gray-800">Edit testimonial</h1>
 <div class="card shadow mb-4">
@@ -33,9 +35,8 @@
       <div class="form-group">
         <label for="status">Status<span class="required-star">*</span></label>
         <select name="publish" class="@error('publish') is-invalid @enderror form-control" id="status">
-          <option value="" selected disabled>--status--</option>
-          <option value="1">PUBLISHED</option>
-          <option value="0">DRAFT</option>
+          <option value="1" @if($testimonial->status == '1') selected @endif>PUBLISHED</option>
+          <option value="0" @if($testimonial->status == '0') selected @endif>UNPUBLISHED</option>
         </select>
       </div>
       <button type="submut" class="btn btn-primary">Simpan</button>

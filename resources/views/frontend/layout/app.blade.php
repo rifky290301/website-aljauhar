@@ -6,11 +6,12 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>@yield('title') PP Al-Jauhar</title>
-  <meta content="" name="description">
+  <meta content="Pondok Pesantren Al-Jauhar Jember. Visi & Misi Unggul dalam Prestasi dan Akhlaqul Karimah Serta Berpijak pada Ajaran Ahlussunah Wal Jamaah Annahdiyah" name="description">
   <meta content="" name="keywords">
+  <meta rel="canonical" href="https://example.com/sample-page">
 
   <!-- Favicons -->
-  <link rel="icon" href="images/logoseginam.png" type="image/png">
+  <link rel="icon" href="/images/logoseginam.png" type="image/png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,17 +28,12 @@
 
   <!-- Template Main CSS File -->
   <link href="/frontend/css/main.css" rel="stylesheet">
-
 </head>
 
 <body>
-
-@include('frontend.layout.topbar')
-
-@yield('content')
-
-@include('frontend.layout.footer')
-
+  @include('frontend.layout.topbar')
+  @yield('content')
+  @include('frontend.layout.footer')
 </body>
 
 </html>

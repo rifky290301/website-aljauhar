@@ -1,5 +1,7 @@
 @extends('admin.layout.app')
 
+@section('title', 'Tag')
+
 @section('content')
 <h1 class="h3 mb-2 text-gray-800">Edit tag</h1>
 <div class="card shadow mb-4">
